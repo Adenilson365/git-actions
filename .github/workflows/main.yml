@@ -1,4 +1,4 @@
-rname: CI-Cd
+name: CI-Cd
 on:
   push:
     branches: ["main"]
