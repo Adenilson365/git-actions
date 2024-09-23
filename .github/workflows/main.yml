@@ -20,5 +20,10 @@ jobs:
     steps:
       - name: "Verifica versão NodeJS"
         run: node --version
+      - name: "Atualiza NodeJS"
+        uses: actions/setup-node@v4.0.4
+        with: 
+          node-version: 20.17.0
+        
     
     
