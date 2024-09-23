@@ -1,0 +1,17 @@
+name: pipeline-python
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  primeiro-job:
+    name: "Primeiro-job"
+    runs-on: ubuntu:22.04
+    steps:
+      - name: "Primeira Ação"
+        run: echo "Hello World!"
+      - name: "Execuções em sequência"
+        run: |
+          echo "Minha primeira pipeline de"
+          echo "CICD"
+    
