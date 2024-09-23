@@ -14,7 +14,8 @@ jobs:
         run: |
           echo "Minha primeira pipeline de"
           echo "CICD"
-  segundo-job: 
+  segundo-job:
+    needs: [primeiro-job]
     name: "Ambiente nodeJS"
     runs-on: ubuntu-22.04
     steps:
