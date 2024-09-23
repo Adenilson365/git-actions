@@ -1,30 +1,23 @@
-name: pipeline-python
+name: CI-Cd
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 jobs:
-  primeiro-job:
-    name: "Primeiro-job"
-    runs-on: ubuntu-22.04
+  CI:
+    runs-on: ubuntu-latest
     steps:
-      - name: "Primeira Ação"
-        run: echo "Hello World!"
-      - name: "Execuções em sequência"
-        run: |
-          echo "Minha primeira pipeline de"
-          echo "CICD"
-  segundo-job:
-    needs: [primeiro-job]
-    name: "Ambiente nodeJS"
-    runs-on: ubuntu-22.04
-    steps:
-      - name: "Verifica versão NodeJS"
-        run: node --version
-      - name: "Atualiza NodeJS"
-        uses: actions/setup-node@v4.0.4
-        with: 
-          node-version: 20.17.0
+    - name: Obtendo código
+      uses: actions/checkout@v4.1.7
+    - name: Docker Login
+      uses: docker/login-action@v3.3.0
+      with:
+        username: ${{ DOCKER_USERNAME }}
+        password: ${{ DOCKER_PASSWORD }}
+    - name: Build Image
+      run: docker build -t adenilsonkon/api-cicd:latest . --file Dockerfile 
+    - name: Push Image
+      run: docker push adenilsonkon/api-cicd:latest
         
-    
-    
+          
+      
