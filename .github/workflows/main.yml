@@ -27,8 +27,21 @@ jobs:
     steps:
     - name: Obtendo código
       uses: actions/checkout@v4.1.7
-
+    - name: configurando cluster
+      uses: azure/k8s-set-context@v4
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+    - name: Deploy no cluster EKS
+      uses: Azure/k8s-deploy@v5
+      with:
+          manifests: |
+            ./deployment.yaml
+          images: adenilsonkon/api-cicd:v${{ github.run_number }}
 
         
+
+
+          
           
       

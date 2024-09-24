@@ -14,7 +14,7 @@ spec:
     spec:
       containers: 
       - name: api-cont
-        image: adenilsonkon/api-cicd:v${{ github.run_number }}
+        image: adenilsonkon/api-cicd
         ports:
         - containerPort: 8000
 ---
