@@ -21,6 +21,13 @@ jobs:
         docker push adenilsonkon/api-cicd:v${{ github.run_number }}
         docker tag adenilsonkon/api-cicd:v${{ github.run_number }} adenilsonkon/api-cicd:latest
         docker push adenilsonkon/api-cicd:latest
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
+    steps:
+    - name: Obtendo código
+      uses: actions/checkout@v4.1.7
+
 
         
           

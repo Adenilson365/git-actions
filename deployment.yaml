@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-web
+spec:
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      name: api-dp
+      labels:
+        app: api
+    spec:
+      containers: 
+      - name: api-cont
+        image: adenilsonkon/api-cicd:v${{ github.run_number }}
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: api-svc
+spec:
+  selector:
+    app: api
+  ports:
+  - port: 80
+    targetPort: 8000
+  type: LoadBalancer
