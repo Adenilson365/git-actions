@@ -51,6 +51,7 @@ jobs:
           manifests: |
             ./deployment.yaml
           images: adenilsonkon/api-cicd:v${{ github.run_number }}
+          arguments: --validate=false 
 
         
 
