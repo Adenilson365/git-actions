@@ -27,13 +27,6 @@ jobs:
     steps:
     - name: Obtendo código
       uses: actions/checkout@v4.1.7
-    - name: configure Profile
-      uses: Fooji/create-aws-profile-action@v1
-      with:
-        profile: aws02
-        region: us-east-1
-        key:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-        secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
